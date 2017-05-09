@@ -19,6 +19,8 @@ corr <- function(directory, threshold = 0) {
   for(i in 1:332) {
     csvFile <- file.path(directory, sprintf('%03d.csv', i))
     csvData <- read.csv(csvFile)
+    # Existing rows can be checked with complete.cases(x):
+    # csvData[complete.cases(csvData),]
     existing <- subset(csvData, !is.na(Date) & !is.na(sulfate) & !is.na(nitrate) & !is.na('ID'))
     if( nrow(existing) < threshold ) next()
     result <- c(result, cor(existing[,'sulfate'], existing[,'nitrate']))

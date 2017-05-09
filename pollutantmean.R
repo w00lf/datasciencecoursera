@@ -16,6 +16,8 @@
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
   result <- NULL
+  # Also can iterate directory files like this:
+  # files <- list.files(directory, full.names = TRUE)
   for(i in id) {
     csvFile <- file.path(directory, sprintf('%03d.csv', i))
     csvData <- read.csv(csvFile)
