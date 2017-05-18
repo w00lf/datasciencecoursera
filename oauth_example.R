@@ -1,0 +1,5 @@
+myapp = oauth_app('twitter', key = 'YOURKEY', secret = 'YOURSECRET')
+sig = sign_oauth1.0(myapp, token = 'YOURTOKEN', token_secret = 'YOURTOKENSECRET')
+homeTL = GET('https://api.twitter,com/1.1/statuses/home_timeline.json', sig)
+json1 = content(homeTL)
+json2 = jsonlite::fromJSON(toJSON(json1))
